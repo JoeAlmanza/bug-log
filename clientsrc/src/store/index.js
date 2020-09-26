@@ -80,6 +80,30 @@ export default new Vuex.Store({
           console.error(error);
       }
     },
+
+    async editBug({commit}, bugData){
+      try {
+        let res = await api.put("bugs/" + bugData.id, bugData)
+        console.log(res);
+        commit("setActiveBug", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async deleteBug({commit}, bugData){
+      try {
+        console.log(bugData);
+        let res = await api.delete("bugs/" + bugData.id)
+        console.log(res);
+        commit("deleteBug", bugData.id)
+        commit("setActiveBug", res.data)
+      } catch (error) {
+        
+      }
+    },
+
+
     async getNotes({commit}, bugId){
       try {
         let res = await api.get("bugs/" + bugId + "/notes" )

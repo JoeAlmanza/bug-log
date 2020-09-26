@@ -4,7 +4,7 @@
       <div>
       <button class="btn btn-primary" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle">Create Bug Log</button>
       </div>
-      <div class="card m-2">
+      
       <form class="form row bg-success m-0" @submit.prevent="createBug" v-if="createToggle">
       <div class="col-6 form-group p-0">
         <input
@@ -28,7 +28,7 @@
           Log Bug
         </button>
       </form>
-      </div>
+      
     </div>
     <div class="row justify-content-center">
       <div class="col-9">

@@ -2,7 +2,10 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="Vue logo" src="../assets/logo.png" style="transform: rotate(-90deg);width: 25px;" />
+        <img   
+          alt="Vue logo" 
+          src="../assets/logo.png" 
+          style="transform: rotate(-90deg);width: 25px;" />
         <img
           alt="Vue logo"
           src="../assets/logo.png"
@@ -44,13 +47,13 @@
       </ul>
       <span class="navbar-text">
         <button
-          class="btn btn-success"
+          class="btn btn-success shadow"
           @click="login"
           v-if="!$auth.isAuthenticated"
         >
           Login
         </button>
-        <button class="btn btn-danger" @click="logout" v-else>logout</button>
+        <button class="btn btn-danger shadow" @click="logout" v-else>logout</button>
       </span>
     </div>
   </nav>
