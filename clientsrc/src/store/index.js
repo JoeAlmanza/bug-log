@@ -35,6 +35,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // Auth0 actions - DO NOT TOUCH!! 
     setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
     },
@@ -47,6 +48,25 @@ export default new Vuex.Store({
         commit("setProfile", res.data);
       } catch (error) {
         console.error(error);
+      }
+    },
+    // 
+    async getAllBugs({commit}){
+      try {
+        let res = await api.get("bugs")
+        commit("setBugs", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async createBug({dispatch}, bugData){
+      try {
+        let res = await api.post("bugs", bugData)
+        dispatch("getAllBugs")
+        router.push({path: "/bugs/" + res.data.id})
+      } catch (error) {
+          console.error(error);
       }
     }
   }
