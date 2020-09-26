@@ -1,8 +1,8 @@
 <template>
   <div class="home container-fluid p-4">
-    <div class="row">
+    <div class="row my-2">
       <div>
-      <button class="btn btn-primary" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle">Create Bug Log</button>
+      <button class="btn btn-primary mx-3" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle">Create Bug Log</button>
       </div>
       
       <form class="form row bg-success m-0" @submit.prevent="createBug" v-if="createToggle">
@@ -24,20 +24,33 @@
             aria-describedby="helpId"
           />
       </div>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-outline-primary shadow">
           Log Bug
         </button>
       </form>
       
     </div>
     <div class="row justify-content-center">
-      <div class="col-9">
+      <div class="col-9 my-3">
+        
         <div class="card shadow">
           <div class="card-header bg-warning">
-            <h4>Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h4>
+            <h2>Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
+            <div class="text-right">
+              <button class="m-1 btn btn-danger shadow border border-dark" @click="showClosed = true; showOpen = false; showAll = false">Show Closed</button>
+              <button class="m-1 btn btn-success shadow border border-dark" @click="showOpen = true; showClosed = false; showAll = false">Show Open</button>
+              <button class="m-1 btn btn-primary shadow border border-dark" @click="showAll = true; showOpen = false; showClosed = false">Show All</button>
+            </div>
           </div>
-          <ul class="list-group list-group-flush">
+
+          <ul class="list-group list-group-flush" v-if="showAll">
           <bug-component v-for="bug in bugs" :key="bug.id" :bugProp="bug" />
+          </ul>
+          <ul class="list-group list-group-flush" v-else-if="showClosed">
+          <bug-component v-for="bug in closedBugs" :key="bug.id" :bugProp="bug" />
+          </ul>
+          <ul class="list-group list-group-flush" v-else-if="showOpen">
+          <bug-component v-for="bug in openBugs" :key="bug.id" :bugProp="bug" />
           </ul>
         </div>
       </div>
@@ -55,6 +68,9 @@ export default {
     return{
       newBug: {},
       createToggle: false,
+      showAll: true,
+      showClosed: false,
+      showOpen: false
     };
   },
   mounted(){
@@ -64,6 +80,14 @@ export default {
     bugs() {
       return this.$store.state.bugs
     },
+    closedBugs() {
+      let res = this.$store.state.bugs.filter(b => b.closed) 
+      return res
+    },
+    openBugs() {
+      let res = this.$store.state.bugs.filter(b => !b.closed)
+      return res
+    }
   },
   methods: {
     createBug(){
@@ -76,3 +100,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+h2{
+  text-shadow: 1px 1px black;
+}
+</style>

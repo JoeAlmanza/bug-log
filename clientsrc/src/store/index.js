@@ -12,6 +12,8 @@ export default new Vuex.Store({
     profile: {},
     bugs: [],
     activeBug: {},
+    openBugs: [],
+    closedBugs: [],
     activeNotes:[]
   },
   mutations: {
@@ -19,7 +21,7 @@ export default new Vuex.Store({
       state.profile = profile;
     },
     setBugs(state, bugs) {
-      state.bugs = bugs;
+      state.bugs = bugs
     },
     setActiveBug(state, bug) {
       state.activeBug = bug
@@ -31,7 +33,7 @@ export default new Vuex.Store({
       state.bugs = bug
     },
     deleteNote(state, note) {
-      state.activeNotes = state.activeNotes.filter(c => c.id != note.id)
+      state.activeNotes = state.activeNotes.filter(n => n.id != note.id)
     }
   },
   actions: {

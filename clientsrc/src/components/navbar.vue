@@ -13,7 +13,7 @@
         />
       </div>
       <div>
-        <h2>ug-Log <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
+        <h2 class="text-info">ug-Log <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
       </div>
       </router-link
     >
@@ -80,4 +80,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h2{
+  text-shadow: 1px 1px black
+}</style>
