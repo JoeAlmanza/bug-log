@@ -6,6 +6,7 @@ class NoteService {
   async find(query = {}) {
     return await dbContext.Notes.find(query)
   }
+
   async getNotesByBugId(bugId) {
     let data = await dbContext.Notes.find(bugId);
     if (!data) {
@@ -18,7 +19,7 @@ class NoteService {
   }
 
   async getById(id) {
-    let data = await dbContext.Notes.findOne(id);
+    let data = await dbContext.Notes.findById(id);
     if (!data) {
       throw new BadRequest("Invalid ID or you do not own this board");
     }

@@ -18,7 +18,7 @@ export class NotesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      let data = await notesService.getAll(req.userInfo.email);
+      let data = await notesService.getAll();
       return res.send(data);
     } catch (err) {
       next(err);
