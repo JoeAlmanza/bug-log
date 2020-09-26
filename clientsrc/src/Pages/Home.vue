@@ -30,8 +30,17 @@
       </form>
       </div>
     </div>
-    <div class="row">
-      <bug-component v-for="bug in bugs" :key="bug.id" :bugProp="bug" />
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <div class="card">
+          <div class="card-header bg-secondary">
+            <h4>Current Bugs <i class="fa fa-bug" aria-hidden="true"></i></h4>
+          </div>
+          <ul class="list-group list-group-flush">
+          <bug-component v-for="bug in bugs" :key="bug.id" :bugProp="bug" />
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
