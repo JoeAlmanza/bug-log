@@ -15,7 +15,7 @@ export class BugsController extends BaseController {
       .get("/:id/notes", this.getNotesByBugId)
       .post("", this.create)
       .put("/:id", this.edit)
-      .delete("/:id", this.delete);
+      .delete("/:id", this.softDelete);
   }
 
   async getAll(req, res, next) {
@@ -70,6 +70,7 @@ export class BugsController extends BaseController {
       req.body.id = req.params.id
       let data = await bugsService.edit(
         req.params.id,
+        req.userInfo.email,
         req.body
       );
       return res.send(data);
@@ -80,10 +81,18 @@ export class BugsController extends BaseController {
 
   async delete(req, res, next) {
     try {
+      await bugsService.delete(req.params.id, req.userInfo.email);
+      return res.send("Successfully deleted");
+    } catch (error) {
+      next(error);
+    }
+  }
+  async softDelete(req, res, next) {
+    try {
       req.body.id = req.params.id
-      req.body.closed = true
-      let data = await bugsService.edit(
-        req.params.id, 
+      let data = await bugsService.softDelete(
+        req.params.id,
+        req.userInfo.email, 
         req.body
         );
       return res.send(data);

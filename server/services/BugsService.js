@@ -19,10 +19,10 @@ class BugsService {
     return data;
   }
 
-  async edit(id, body) {
+  async edit(id, creatorEmail, body) {
     console.log(body.createdAt);
     let data = await dbContext.Bugs.findOneAndUpdate(
-      { _id: id}, 
+      { _id: id, creatorEmail, closed: false}, 
       body,
       { new: true }
     );
@@ -32,17 +32,26 @@ class BugsService {
     return data;
   }
 
-  async delete(id, body) {
-    let data = await dbContext.Bugs.findOneAndUpdate(
-      {_id: id},
-      body,
-      { new: true }
-    );
+  async softDelete(id, creatorEmail, body) {
+    console.log(body.createdAt);
+    let data = await dbContext.Bugs.findById(id);
+    data.closed = true;
+    this.edit(data.id, creatorEmail, data)
     if (!data) {
-      throw new BadRequest("Invalid ID or you do not own this board");
+      throw new BadRequest("Invalid ID, closed status or you do not own this board");
     }
     return data;
   }
+  async delete(id, creatorEmail) {
+    let data = await dbContext.Bugs.findOneAndRemove({
+      _id: id, 
+      creatorEmail, 
+    });
+    if (!data) {
+      throw new BadRequest("Invalid ID or you do not own this board");
+    }
+  }
+
 
 }
 
