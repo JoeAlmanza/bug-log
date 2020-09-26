@@ -14,7 +14,8 @@ export class BugsController extends BaseController {
       .get("/:id", this.getById)
       .get("/:id/notes", this.getNotesByBugId)
       .post("", this.create)
-      .put("/:id", this.edit);
+      .put("/:id", this.edit)
+      .delete("/:id", this.delete);
   }
 
   async getAll(req, res, next) {
@@ -66,11 +67,25 @@ export class BugsController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      req.body.id = req.params.id
       let data = await bugsService.edit(
         req.params.id,
-        req.userInfo.email,
         req.body
       );
+      return res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      req.body.id = req.params.id
+      req.body.closed = true
+      let data = await bugsService.edit(
+        req.params.id, 
+        req.body
+        );
       return res.send(data);
     } catch (error) {
       next(error);

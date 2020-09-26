@@ -19,10 +19,23 @@ class BugsService {
     return data;
   }
 
-  async edit(id, creatorEmail, update) {
+  async edit(id, body) {
+    console.log(body.createdAt);
     let data = await dbContext.Bugs.findOneAndUpdate(
-      { _id: id, creatorEmail },
-      update,
+      { _id: id}, 
+      body,
+      { new: true }
+    );
+    if (!data) {
+      throw new BadRequest("Invalid ID or you do not own this board");
+    }
+    return data;
+  }
+
+  async delete(id, body) {
+    let data = await dbContext.Bugs.findOneAndUpdate(
+      {_id: id},
+      body,
       { new: true }
     );
     if (!data) {

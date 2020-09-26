@@ -18,7 +18,7 @@ export class NotesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      let data = await notesService.getAll(req.user.email);
+      let data = await notesService.getAll(req.userInfo.email);
       return res.send(data);
     } catch (err) {
       next(err);
@@ -36,7 +36,7 @@ export class NotesController extends BaseController {
 
   async create(req, res, next) {
     try {
-      req.body.creatorEmail = req.user.email;
+      req.body.creatorEmail = req.userInfo.email;
       let data = await notesService.create(req.body);
       return res.status(201).send(data);
     } catch (error) {
@@ -48,7 +48,7 @@ export class NotesController extends BaseController {
     try {
       let data = await notesService.edit(
         req.params.id,
-        req.user.email,
+        req.userInfo.email,
         req.body
       );
       return res.send(data);
