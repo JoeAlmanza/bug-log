@@ -35,6 +35,7 @@ class BugsService {
   async softDelete(id, creatorEmail, body) {
     console.log(body.createdAt);
     let data = await dbContext.Bugs.findById(id);
+    // @ts-ignore
     data.closed = true;
     this.edit(data.id, creatorEmail, data)
     if (!data) {

@@ -9,11 +9,29 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    bugs: [],
+    activeBug: {},
+    activeNotes:[]
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setBugs(state, bugs) {
+      state.bugs = bugs;
+    },
+    setActiveBug(state, bug) {
+      state.activeBug = bug
+    },
+    setNotes(state, note) {
+      state.activeNotes = note
+    },
+    deleteBug(state, bug) {
+      state.bugs = bug
+    },
+    deleteNote(state, note) {
+      state.activeNotes = state.activeNotes.filter(c => c.id != note.id)
     }
   },
   actions: {

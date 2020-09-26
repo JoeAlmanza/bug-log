@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <router-link class="navbar-brand" :to="{ name: 'Home' }"
-      >AppName</router-link
+      >Bug-Log <i class="fa fa-bug" aria-hidden="true"></i></router-link
     >
     <button
       class="navbar-toggler"

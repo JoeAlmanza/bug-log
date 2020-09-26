@@ -11,10 +11,14 @@ import { onAuth } from "@bcwdev/auth0-vue";
 export default {
   name: "App",
   async beforeCreate() {
-    await onAuth();
-    if (this.$auth.isAuthenticated) {
-      this.$store.dispatch("setBearer", this.$auth.bearer);
-      this.$store.dispatch("getProfile");
+    try {
+      await onAuth();
+      if (this.$auth.isAuthenticated) {
+        this.$store.dispatch("setBearer", this.$auth.bearer);
+        this.$store.dispatch("getProfile");
+      }
+    } catch (error) {
+      this.$router.push({name: "Home"})
     }
   },
   components: {
