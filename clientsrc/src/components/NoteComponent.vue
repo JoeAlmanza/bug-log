@@ -44,7 +44,12 @@ export default {
       this.editToggle = false
     },
     deleteNote(){
+      let c = confirm("Are you sure you'd like to remove this note?")
+      if(c == true){
       this.$store.dispatch("deleteNote", this.noteProp)
+      } else {
+        return
+      }
     },
   },
   components:{}

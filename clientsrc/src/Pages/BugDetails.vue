@@ -101,15 +101,19 @@ export default {
       this.newNote = {}
     },
     editBug(){
-      console.log(this.bugData);
       this.bugEdit.id = this.$route.params.bugId;
       this.$store.dispatch("editBug", this.bugEdit);
       this.editToggle = false;
       this.bugData = {}
     },
     deleteBug(){
-      this.bugData.id = this.$route.params.bugId;
-      this.$store.dispatch("deleteBug", this.bugData)
+      let c = confirm("Are you sure you'd like to close this bug?")
+      if(c == true){
+        this.bugData.id = this.$route.params.bugId;
+        this.$store.dispatch("deleteBug", this.bugData)
+      }else{
+        return
+      }
     }
   },
   components:{
@@ -122,5 +126,8 @@ export default {
 <style scoped>
 h2, h5{
   text-shadow: 1px 1px black;
+}
+button:active{
+  transform: translateY(2px);
 }
 </style>

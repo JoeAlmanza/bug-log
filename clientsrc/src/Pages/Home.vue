@@ -2,10 +2,10 @@
   <div class="home container-fluid p-4">
     <div class="row my-2">
       <div>
-      <button class="btn btn-primary mx-3" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle">Create Bug Log</button>
+      <button class="btn btn-primary mx-3" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle"><i class="fa fa-bug text-warning" aria-hidden="true"></i></button>
       </div>
-      
-      <form class="form row bg-success m-0" @submit.prevent="createBug" v-if="createToggle">
+      <div class="col-8">
+      <form class="form row bg-success m-0 flex-column" @submit.prevent="createBug" v-if="createToggle">
       <div class="col-6 form-group p-0">
         <input
             type="text"
@@ -24,22 +24,22 @@
             aria-describedby="helpId"
           />
       </div>
-          <button type="submit" class="btn btn-outline-primary shadow">
+          <button type="submit" class="btn btn-primary shadow col-3">
           Log Bug
         </button>
       </form>
-      
+      </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-9 my-3">
         
         <div class="card shadow">
           <div class="card-header bg-warning">
-            <h2>Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
+            <h2 class="text-info">Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
             <div class="text-right">
-              <button class="m-1 btn btn-danger shadow border border-dark" @click="showClosed = true; showOpen = false; showAll = false">Show Closed</button>
-              <button class="m-1 btn btn-success shadow border border-dark" @click="showOpen = true; showClosed = false; showAll = false">Show Open</button>
-              <button class="m-1 btn btn-primary shadow border border-dark" @click="showAll = true; showOpen = false; showClosed = false">Show All</button>
+              <button class="m-1 btn btn-danger shadow border border-dark" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-dark" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-success shadow border border-dark" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-primary" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-primary shadow border border-dark" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-warning" aria-hidden="true"></i>'s</button>
             </div>
           </div>
 
@@ -104,5 +104,8 @@ export default {
 <style scoped>
 h2{
   text-shadow: 1px 1px black;
+}
+button:active{
+  transform: translateY(2px);
 }
 </style>
