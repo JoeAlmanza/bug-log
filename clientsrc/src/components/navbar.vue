@@ -10,7 +10,7 @@
         />
       </div>
       <div>
-        <h2>ug-Log <i class="fa fa-bug" aria-hidden="true"></i></h2>
+        <h2>ug-Log <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
       </div>
       </router-link
     >
