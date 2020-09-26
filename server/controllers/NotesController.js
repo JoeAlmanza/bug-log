@@ -34,6 +34,7 @@ export class NotesController extends BaseController {
     }
   }
 
+
   async create(req, res, next) {
     try {
       req.body.creatorEmail = req.userInfo.email;

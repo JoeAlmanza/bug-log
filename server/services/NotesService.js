@@ -26,6 +26,7 @@ class NoteService {
     return data;
   }
 
+
   async create(body) {
     let data = await dbContext.Notes.create(body);
     return data;

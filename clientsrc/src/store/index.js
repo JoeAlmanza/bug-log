@@ -60,6 +60,17 @@ export default new Vuex.Store({
       }
     },
 
+    async getActiveBug({commit}, bugId){
+      try {
+        
+        let res = await api.get("bugs/" + bugId)
+        console.log(res);
+        commit("setActiveBug", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async createBug({dispatch}, bugData){
       try {
         let res = await api.post("bugs", bugData)
@@ -67,6 +78,41 @@ export default new Vuex.Store({
         router.push({path: "/bugs/" + res.data.id})
       } catch (error) {
           console.error(error);
+      }
+    },
+    async getNotes({commit}, bugId){
+      try {
+        let res = await api.get("bugs/" + bugId + "/notes" )
+        console.log(res.data);
+        commit("setNotes", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async addNote({dispatch}, noteData) {
+      try {
+        console.log(noteData);
+        let res = await api.post("notes", noteData)
+        dispatch("getNotes", res.data.bug)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async editNote({dispatch}, noteData){
+      try {
+        let res = await api.put("notes/" + noteData.id, noteData)
+        dispatch("getNotes", res.data.bug)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteNote({commit, dispatch}, noteData){
+      try {
+        await api.delete("notes/" + noteData.id)
+        commit("deleteNote", noteData.id)
+        dispatch("getNotes", noteData.bug)
+      } catch (error) {
+        console.error(error);
       }
     }
   }
