@@ -2,15 +2,16 @@
   <div class="home container-fluid p-4">
     <div class="row my-2">
       <div>
-      <button class="btn btn-primary mx-3" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle"><i class="fa fa-bug text-warning" aria-hidden="true"></i></button>
+      <button class="btn btn-primary mx-3 createButton" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle"><i class="fa fa-bug text-warning" aria-hidden="true"></i></button>
       </div>
       <div class="col-8">
-      <form class="form row bg-success m-0 flex-column" @submit.prevent="createBug" v-if="createToggle">
+      <form class="form row addCard m-0 flex-column" @submit.prevent="createBug" v-if="createToggle">
       <div class="col-6 form-group p-0">
+        <h5 class="text-primary">Add Bug:</h5>
         <input
             type="text"
             v-model="newBug.title"
-            class="form-control mt-1 mb-0"
+            class="form-control mt-1 mb-0 bg-dark text-info"
             placeholder="Title..."
             aria-describedby="helpId"
           />
@@ -18,28 +19,27 @@
       <div class="col-6 form-group p-0">
         <input
             type="text"
-            class="form-control mt-1 mb-0"
+            class="form-control mt-1 mb-0 bg-dark text-primary"
             v-model="newBug.description"
             placeholder="Description..."
             aria-describedby="helpId"
           />
       </div>
-          <button type="submit" class="btn btn-primary shadow col-3">
-          Log Bug
+          <button type="submit" class="btn btn-primary col-3 allButton">
+          Log <i class="fa fa-bug text-warning" aria-hidden="true"></i>
         </button>
       </form>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-9 my-3">
-        
-        <div class="card shadow">
-          <div class="card-header bg-warning">
-            <h2 class="text-info">Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
+        <div class="card bg-dark">
+          <div class="card-header">
+            <h2 class="text-warning">Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
             <div class="text-right">
-              <button class="m-1 btn btn-danger shadow border border-dark" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-dark" aria-hidden="true"></i>'s</button>
-              <button class="m-1 btn btn-success shadow border border-dark" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-primary" aria-hidden="true"></i>'s</button>
-              <button class="m-1 btn btn-primary shadow border border-dark" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-warning" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-dark" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-primary" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-primary allButton" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-warning" aria-hidden="true"></i>'s</button>
             </div>
           </div>
 
@@ -105,6 +105,41 @@ export default {
 h2{
   text-shadow: 1px 1px black;
 }
+
+.createButton{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #5881ab, 
+            -2px -2px 5px #5881ab;
+}
+.closedButton{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px  #e68484, 
+            -2px -2px 5px  #e68484;
+}
+.openButton{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #bceeb2, 
+            -2px -2px 5px #bceeb2;
+}
+.allButton{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #5881ab, 
+            -2px -2px 5px #5881ab;
+}
+.addCard{
+  background-color:  #d0ecca;
+}
+.card-header{
+  border-radius: 15px 15px 3px 3px;
+} 
+
+.card{
+  border-radius: 15px 15px 3px 3px;
+  box-shadow: 6px 6px 12px #343a40;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
 button:active{
   transform: translateY(2px);
 }

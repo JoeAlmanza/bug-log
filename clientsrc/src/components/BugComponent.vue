@@ -1,13 +1,13 @@
 <template>
   <div class="bug-component">
-    <router-link class="list-group-item d-flex justify-content-around border-bottom" :to="{name:'bug-details', params:{bugId: bugProp.id}}">
-      <div v-if="bugProp.closed == true">
+    <router-link class="d-flex justify-content-around bugCard" :to="{name:'bug-details', params:{bugId: bugProp.id}}">
+      <div class="displayContents" v-if="bugProp.closed == true">
+          <h5 class="text-danger">CLOSED</h5>-
           <h5 class="text-info" style="text-decoration: line-through">{{bugProp.title}}</h5>
-          <h5 class="text-danger">CLOSED</h5>
       </div>
-      <div v-else>
+      <div class="displayContents" v-else>
+          <h5 class="text-success">OPEN</h5>-
           <h5 class="text-info">{{bugProp.title}}</h5>
-          <h5 class="text-success">OPEN</h5>
       </div>
           <p class="text-primary m-0">By: {{bugProp.creatorEmail}}</p>
           <p class="text-primary m-0">Last updated: {{bugProp.updatedAt}}</p>
@@ -35,6 +35,13 @@ h5{
   text-shadow: 1px 1px black;
 }
 .bugCard{
-  border-bottom: 1px solid black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: 1px solid black;
+  padding: 8px 5px 8px 5px;
 }
+.displayContents{
+  display: contents;
+}
+
 </style>

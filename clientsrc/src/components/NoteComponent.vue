@@ -1,12 +1,12 @@
 <template>
-    <div class="col-12 card d-flex mb-2 justify-content-baseline shadow">
+    <div class="col-12 card d-flex mb-2 justify-content-baseline bg-dark">
         <div class="card-body noteCard text-left">
           <p class="m-0"><i class="fa fa-times-circle-o text-danger pointer" aria-hidden="" @click="deleteNote" v-if="noteProp.creatorEmail == this.$auth.userInfo.name"></i>  <i
             class="fa fa-pencil text-primary pointer"
             aria-hidden="true"
             @click="editToggle = !editToggle"
             v-if="noteProp.creatorEmail == this.$auth.userInfo.name"
-          ></i><u class="text-info">{{noteProp.creatorEmail}}</u>: {{noteProp.content}} </p>
+          ></i><u class="text-info">{{noteProp.creatorEmail}}:</u> <span class="text-warning">{{noteProp.content}}</span>  </p>
           <form class="form d-flex flex-column align-items-center" @submit.prevent="editNote" v-if="editToggle">
           <div class="col-6 d-flex justify-content-center">
           <input

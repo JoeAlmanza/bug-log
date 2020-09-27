@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img   
@@ -31,7 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link"
+          <router-link :to="{ name: 'Home' }" class="nav-link text-warning"
             >Home</router-link
           >
         </li>
@@ -40,20 +40,22 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Profile' }"
+          <router-link class="nav-link text-warning" :to="{ name: 'Profile' }"
             >Profile</router-link
           >
         </li>
       </ul>
       <span class="navbar-text">
         <button
-          class="btn btn-success shadow border border-dark"
+          class="btn btn-success loginShadow"
           @click="login"
-          v-if="!$auth.isAuthenticated"
-        >
+          v-if="!$auth.isAuthenticated">
           Login
         </button>
-        <button class="btn btn-light btnShadow" @click="logout" v-else>logout</button>
+        <button 
+          class="btn btn-warning logoutShadow" 
+          @click="logout" 
+          v-else>Logout</button>
       </span>
     </div>
   </nav>
@@ -84,8 +86,18 @@ export default {
 h2{
   text-shadow: 1px 1px black
 }
-.btnShadow{
-  box-shadow: 3px 3px 8px #e0e0e0, 
-            -3px -3px 9px #ebebeb;;
+.loginShadow{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #bceeb2, 
+            -2px -2px 5px #bceeb2
 }
+.logoutShadow{
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px  #ffe59e, 
+            -2px -2px 5px  #ffe59e
+}
+.navbar{
+  box-shadow: 0px 2px 4px #343a40
+}
+
 </style>
