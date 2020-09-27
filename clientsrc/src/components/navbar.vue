@@ -31,8 +31,8 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <span class="navbar-nav mr-auto">
         <li class="nav-item p-0" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link text-warning"
-            >Home</router-link
+          <router-link :to="{ name: 'Home' }" class="nav-link text-info"
+            ><button class="btn btn-outline-warning homeButtonShadow">Home</button></router-link
           >
         </li>
         <li
@@ -40,20 +40,24 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link text-warning" :to="{ name: 'Profile' }"
-            >Profile</router-link
+          <router-link class="nav-link text-info" :to="{ name: 'Profile' }"
+            >
+            <button class="btn btn-outline-warning profileButtonShadow">
+              Profile
+            </button>
+            </router-link
           >
         </li>
       </span>
       <span class="navbar-text">
         <button
-          class="btn btn-success loginButtonShadow text-primary"
+          class="btn btn-outline-success loginButtonShadow"
           @click="login"
           v-if="!$auth.isAuthenticated">
           Sign In
         </button>
         <button 
-          class="btn btn-danger logoutButtonShadow text-primary" 
+          class="btn btn-outline-danger logoutButtonShadow" 
           @click="logout" 
           v-else>Sign Out</button>
       </span>
@@ -95,6 +99,16 @@ h2{
 button{
   text-shadow: 0px 1px black;
 }
+.homeButtonShadow{
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px   #ffe59e, 
+            -1px -1px 4px   #ffe59e
+}
+.profileButtonShadow{
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px   #ffe59e, 
+            -1px -1px 4px   #ffe59e
+}
 .loginButtonShadow{
   border-radius: 15px;
   box-shadow: 1px 1px 4px #bceeb2, 
@@ -106,7 +120,7 @@ button{
             -1px -1px 4px   #e68484
 }
 .navbar{
-  box-shadow: 0px 2px 4px #343a40
+  box-shadow: 4px 4px 10px #343a40
 }
 
 </style>

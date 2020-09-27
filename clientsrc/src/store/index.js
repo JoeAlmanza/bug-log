@@ -102,6 +102,14 @@ export default new Vuex.Store({
       }
     },
 
+    async getAllNotes({commit}){
+      try {
+        let res = await api.get("notes")
+        commit("setNotes", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
 
     async getNotes({commit}, bugId){
       try {

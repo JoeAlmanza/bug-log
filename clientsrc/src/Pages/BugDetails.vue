@@ -57,8 +57,8 @@
         </form>
         </div>
         </div>
-      <div class="mt-3 row justify-content-center " >
-        <note-component v-for="note in notes" :key="note.id" :noteProp="note" />
+        <div class="mt-3 row justify-content-center " >
+          <note-component v-for="note in notes" :key="note.id" :noteProp="note" />
         </div>
         </div>
       </div>
