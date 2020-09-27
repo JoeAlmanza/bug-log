@@ -47,13 +47,13 @@
       </ul>
       <span class="navbar-text">
         <button
-          class="btn btn-success shadow"
+          class="btn btn-success shadow border border-dark"
           @click="login"
           v-if="!$auth.isAuthenticated"
         >
           Login
         </button>
-        <button class="btn btn-danger shadow" @click="logout" v-else>logout</button>
+        <button class="btn btn-light btnShadow" @click="logout" v-else>logout</button>
       </span>
     </div>
   </nav>
@@ -83,4 +83,9 @@ export default {
 <style scoped>
 h2{
   text-shadow: 1px 1px black
-}</style>
+}
+.btnShadow{
+  box-shadow: 3px 3px 8px #e0e0e0, 
+            -3px -3px 9px #ebebeb;;
+}
+</style>
