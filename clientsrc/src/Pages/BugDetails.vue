@@ -14,11 +14,11 @@
             <button class="btn btn-success closeButton" aria-hidden="" @click="deleteBug" v-if="this.bug.creatorEmail == this.$auth.userInfo.name && this.bug.closed == false">Close <i class="fa fa-bug text-primary" aria-hidden="true"></i></button>  
           </p>
         <div class="card-body" v-if="this.bug.closed == true">
-          <h2 class="text-warning" style="text-decoration: line-through"><i class="fa fa-bug titleBug" aria-hidden="true"></i>{{bug.title}}</h2>
+          <h2 class="text-warning" style="text-decoration: line-through"><i class="fa fa-bug titleBug" aria-hidden="true"></i> {{bug.title}}</h2>
           <h3 class="text-danger">Closed</h3>
         </div>
         <div class="card-body p-0" v-else>
-          <h2 class="text-warning"><i class="fa fa-bug titleBug" aria-hidden="true"></i>{{bug.title}}</h2>
+          <h2 class="text-warning"><i class="fa fa-bug titleBug" aria-hidden="true"></i> {{bug.title}}</h2>
           <h3 class="text-success">Open</h3>
         </div>
         <form @submit.prevent="editBug" class="md-form text-danger d-flex flex-column align-items-baseline" v-if="editToggle">
