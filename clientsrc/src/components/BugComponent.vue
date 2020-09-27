@@ -10,7 +10,7 @@
           <h5 class="text-info">{{bugProp.title}}</h5>
       </div>
           <p class="text-warning m-0">Author: {{bugProp.creatorEmail}}</p>
-          <p class="text-primary m-0">Last updated: {{bugProp.updatedAt}}</p>
+          <p class="text-primary m-0">Last updated: {{bugProp.updatedAt | formatDate}}</p>
     </router-link>
   </div>
 </template>
