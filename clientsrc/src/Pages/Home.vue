@@ -37,9 +37,9 @@
           <div class="card-header">
             <h2 class="text-warning">Current Bugs <i class="fa fa-bug text-success" aria-hidden="true"></i></h2>
             <div class="text-right">
-              <button class="m-1 btn btn-outline-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-danger" aria-hidden="true"></i>'s</button>
-              <button class="m-1 btn btn-outline-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-success" aria-hidden="true"></i>'s</button>
               <button class="m-1 btn btn-outline-info allButton" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-info" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-outline-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-success" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-outline-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-danger" aria-hidden="true"></i>'s</button>
             </div>
           </div>
 
