@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 card d-flex mb-2 justify-content-baseline bg-dark">
+    <div class="col-11 card d-flex mb-2 justify-content-baseline bg-dark">
         <div class="card-body noteCard text-left">
           <p class="m-0"><i class="fa fa-times-circle-o text-danger pointer" aria-hidden="" @click="deleteNote" v-if="noteProp.creatorEmail == this.$auth.userInfo.name"></i>  <i
             class="fa fa-pencil text-primary pointer"

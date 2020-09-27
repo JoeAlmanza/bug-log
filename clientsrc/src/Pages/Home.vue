@@ -37,9 +37,9 @@
           <div class="card-header">
             <h2 class="text-warning">Current Bugs <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
             <div class="text-right">
-              <button class="m-1 btn btn-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-dark" aria-hidden="true"></i>'s</button>
-              <button class="m-1 btn btn-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-primary" aria-hidden="true"></i>'s</button>
-              <button class="m-1 btn btn-primary allButton" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-warning" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-outline-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-info" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-outline-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-primary" aria-hidden="true"></i>'s</button>
+              <button class="m-1 btn btn-outline-warning allButton" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-danger" aria-hidden="true"></i>'s</button>
             </div>
           </div>
 
@@ -108,23 +108,23 @@ h2{
 
 .createButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px #5881ab, 
-            -2px -2px 5px #5881ab;
+  box-shadow: 1px 1px 4px #5881ab, 
+            -1px -1px 4px #5881ab;
 }
 .closedButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px  #e68484, 
-            -2px -2px 5px  #e68484;
+  box-shadow: 1px 1px 4px  #e68484, 
+            -1px -1px 4px  #e68484;
 }
 .openButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px #bceeb2, 
-            -2px -2px 5px #bceeb2;
+  box-shadow: 1px 1px 4px #bceeb2, 
+            -1px -1px 4px #bceeb2;
 }
 .allButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px #5881ab, 
-            -2px -2px 5px #5881ab;
+  box-shadow: 1px 1px 4px #ffe59e, 
+            -1px -1px 4px #ffe59e;
 }
 .addCard{
   background-color:  #d0ecca;

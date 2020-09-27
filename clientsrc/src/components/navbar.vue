@@ -29,8 +29,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" :class="{ active: $route.name == 'Home' }">
+      <span class="navbar-nav mr-auto">
+        <li class="nav-item p-0" :class="{ active: $route.name == 'Home' }">
           <router-link :to="{ name: 'Home' }" class="nav-link text-warning"
             >Home</router-link
           >
@@ -44,16 +44,16 @@
             >Profile</router-link
           >
         </li>
-      </ul>
+      </span>
       <span class="navbar-text">
         <button
-          class="btn btn-success loginShadow"
+          class="btn btn-success loginButtonShadow text-primary"
           @click="login"
           v-if="!$auth.isAuthenticated">
           Login
         </button>
         <button 
-          class="btn btn-warning logoutShadow" 
+          class="btn btn-warning logoutButtonShadow text-danger" 
           @click="logout" 
           v-else>Logout</button>
       </span>
@@ -72,11 +72,17 @@ export default {
       if(this.$auth.isAuthenticated){
         this.$store.dispatch("setBearer", this.$auth.bearer);
         this.$store.dispatch("getProfile");
+        this.$store.dispatch("getAllBugs")
       }
     },
     async logout() {
+      let c = confirm("Are you sure you'd like to log out?")
+      if(c == true){
       this.$store.dispatch("resetBearer");
       await this.$auth.logout({returnTo: window.location.origin});
+      }else{
+        return
+      }
     }
   }
 };
@@ -86,15 +92,15 @@ export default {
 h2{
   text-shadow: 1px 1px black
 }
-.loginShadow{
+.loginButtonShadow{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px #bceeb2, 
-            -2px -2px 5px #bceeb2
+  box-shadow: 1px 1px 4px #bceeb2, 
+            -1px -1px 4px #bceeb2
 }
-.logoutShadow{
+.logoutButtonShadow{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px  #ffe59e, 
-            -2px -2px 5px  #ffe59e
+  box-shadow: 1px 1px 4px  #ffe59e, 
+            -1px -1px 4px  #ffe59e
 }
 .navbar{
   box-shadow: 0px 2px 4px #343a40

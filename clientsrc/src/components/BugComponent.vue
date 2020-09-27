@@ -9,7 +9,7 @@
           <h5 class="text-success">OPEN</h5>-
           <h5 class="text-info">{{bugProp.title}}</h5>
       </div>
-          <p class="text-primary m-0">By: {{bugProp.creatorEmail}}</p>
+          <p class="text-warning m-0">Author: {{bugProp.creatorEmail}}</p>
           <p class="text-primary m-0">Last updated: {{bugProp.updatedAt}}</p>
     </router-link>
   </div>

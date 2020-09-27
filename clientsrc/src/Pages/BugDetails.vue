@@ -5,31 +5,31 @@
         <div class="card bg-dark">
         <div class="card-header">
           <p class="m-0 d-flex justify-content-between">
-            <i
-            class="fa fa-pencil text-primary pointer"
+            <button
+            class="btn btn-outline-primary fa fa-pencil text-warning toggleEditButton"
             aria-hidden="true"
             @click="editToggle = !editToggle"
             v-if="this.bug.creatorEmail == this.$auth.userInfo.name && this.bug.closed == false">
-            </i>
-            <button class="btn btn-outline-success shadow" aria-hidden="" @click="deleteBug" v-if="this.bug.creatorEmail == this.$auth.userInfo.name && this.bug.closed == false">Close <i class="fa fa-bug text-info" aria-hidden="true"></i></button>  
+            </button>
+            <button class="btn btn-success closeButton" aria-hidden="" @click="deleteBug" v-if="this.bug.creatorEmail == this.$auth.userInfo.name && this.bug.closed == false">Close <i class="fa fa-bug text-primary" aria-hidden="true"></i></button>  
           </p>
-        <form @submit.prevent="editBug" class="md-form" v-if="editToggle">
+        <form @submit.prevent="editBug" class="md-form text-primary" v-if="editToggle">
           <h5>Edit Bug Details</h5>
         <input
           v-model="bugEdit.title"
           type="text"
           id="materialSaveFormName"
-          class="form-control m-1"
+          class="form-control mr-5 my-2"
           placeholder="Bug title..."
         />
         <input
           v-model="bugEdit.description"
           type="text"
           id="materialSaveFormName"
-          class="form-control m-1"
+          class="form-control mr-5 my-2"
           placeholder="Bug description..."
         />
-        <button class="btn btn-warning shadow" type="submit">Save</button>
+        <button class="btn btn-warning saveEditButton my-2" type="submit">Save Edit</button>
       </form>
         <div class="card-body" v-if="this.bug.closed == true">
           <h2 class="text-warning" style="text-decoration: line-through"><i class="fa fa-bug text-primary" aria-hidden="true"></i>{{bug.title}}</h2>
@@ -44,10 +44,10 @@
           <h5 class="text-primary">{{bug.description}}</h5>
         </div>
         <div v-if="noteToggle && this.bug.closed == false">
-          <button class="btn btn-warning mb-2 noteButton" @click="noteToggle = !noteToggle">Hide</button>
+          <button class="btn btn-outline-warning mb-2 noteButton" @click="noteToggle = !noteToggle">Hide</button>
         </div>
         <div v-else-if="!noteToggle && this.bug.closed == false">
-          <button class="btn btn-warning mb-3 noteButton" @click="noteToggle = !noteToggle">Add Note</button>
+          <button class="btn btn-outline-warning mb-3 noteButton" @click="noteToggle = !noteToggle">Add Note</button>
         </div>
         <div v-if="noteToggle">
         <form class="card-body flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated && this.bug.closed == false">
@@ -100,6 +100,7 @@ export default {
       }
       this.$store.dispatch("addNote", payload)
       this.newNote = {}
+      this.noteToggle = false
     },
     editBug(){
       this.bugEdit.id = this.$route.params.bugId;
@@ -133,13 +134,28 @@ button:active{
 }
 .noteButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px  #ffe59e, 
-            -2px -2px 5px  #ffe59e
+  box-shadow: 1px 1px 4px  #ffe59e, 
+            -1px -1px 4px  #ffe59e
 }
 .postNoteButton{
   border-radius: 15px;
-  box-shadow: 2px 2px 5px #bceeb2, 
-            -2px -2px 5px #bceeb2
+  box-shadow: 1px 1px 4px #bceeb2, 
+            -1px -1px 4px #bceeb2
+}
+.toggleEditButton{
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px #5881ab, 
+            -1px -1px 4px #5881ab;
+}
+.saveEditButton{
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px  #ffe59e, 
+            -1px -1px 4px  #ffe59e
+}
+.closeButton{
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px #bceeb2, 
+            -1px -1px 4px #bceeb2
 }
 .card-header{
   border-radius: 15px 15px 3px 3px;
