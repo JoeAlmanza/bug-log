@@ -13,7 +13,7 @@
         />
       </div>
       <div>
-        <h2 class="text-info">ug-Log <i class="fa fa-bug text-primary" aria-hidden="true"></i></h2>
+        <h2 class="text-info">ug-Log <i class="fa fa-bug text-success" aria-hidden="true"></i></h2>
       </div>
       </router-link
     >
@@ -50,12 +50,12 @@
           class="btn btn-success loginButtonShadow text-primary"
           @click="login"
           v-if="!$auth.isAuthenticated">
-          Login
+          Sign In
         </button>
         <button 
-          class="btn btn-warning logoutButtonShadow text-danger" 
+          class="btn btn-danger logoutButtonShadow text-primary" 
           @click="logout" 
-          v-else>Logout</button>
+          v-else>Sign Out</button>
       </span>
     </div>
   </nav>
@@ -92,6 +92,9 @@ export default {
 h2{
   text-shadow: 1px 1px black
 }
+button{
+  text-shadow: 0px 1px black;
+}
 .loginButtonShadow{
   border-radius: 15px;
   box-shadow: 1px 1px 4px #bceeb2, 
@@ -99,8 +102,8 @@ h2{
 }
 .logoutButtonShadow{
   border-radius: 15px;
-  box-shadow: 1px 1px 4px  #ffe59e, 
-            -1px -1px 4px  #ffe59e
+  box-shadow: 1px 1px 4px   #e68484, 
+            -1px -1px 4px   #e68484
 }
 .navbar{
   box-shadow: 0px 2px 4px #343a40

@@ -78,15 +78,6 @@ export class BugsController extends BaseController {
       next(error);
     }
   }
-
-  async delete(req, res, next) {
-    try {
-      await bugsService.delete(req.params.id, req.userInfo.email);
-      return res.send("Successfully deleted");
-    } catch (error) {
-      next(error);
-    }
-  }
   async softDelete(req, res, next) {
     try {
       req.body.id = req.params.id
@@ -96,6 +87,15 @@ export class BugsController extends BaseController {
         req.body
         );
       return res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      await bugsService.delete(req.params.id, req.userInfo.email);
+      return res.send("Successfully deleted");
     } catch (error) {
       next(error);
     }

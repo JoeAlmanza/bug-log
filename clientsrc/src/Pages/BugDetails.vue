@@ -13,35 +13,36 @@
             </button>
             <button class="btn btn-success closeButton" aria-hidden="" @click="deleteBug" v-if="this.bug.creatorEmail == this.$auth.userInfo.name && this.bug.closed == false">Close <i class="fa fa-bug text-primary" aria-hidden="true"></i></button>  
           </p>
-        <form @submit.prevent="editBug" class="md-form text-primary" v-if="editToggle">
-          <h5>Edit Bug Details</h5>
+        <div class="card-body" v-if="this.bug.closed == true">
+          <h2 class="text-warning" style="text-decoration: line-through"><i class="fa fa-bug titleBug" aria-hidden="true"></i>{{bug.title}}</h2>
+          <h3 class="text-danger">Closed</h3>
+        </div>
+        <div class="card-body p-0" v-else>
+          <h2 class="text-warning"><i class="fa fa-bug titleBug" aria-hidden="true"></i>{{bug.title}}</h2>
+          <h3 class="text-success">Open</h3>
+        </div>
+        <form @submit.prevent="editBug" class="md-form text-danger d-flex flex-column align-items-baseline" v-if="editToggle">
+          <h5>Edit Bug Details:</h5>
         <input
           v-model="bugEdit.title"
           type="text"
           id="materialSaveFormName"
-          class="form-control mr-5 my-2"
+          class="mr-5 my-2 form-control col-5 bg-info"
           placeholder="Bug title..."
         />
         <input
           v-model="bugEdit.description"
           type="text"
           id="materialSaveFormName"
-          class="form-control mr-5 my-2"
+          class="mr-5 my-2 form-control col-5 bg-info"
           placeholder="Bug description..."
         />
         <button class="btn btn-warning saveEditButton my-2" type="submit">Save Edit</button>
       </form>
-        <div class="card-body" v-if="this.bug.closed == true">
-          <h2 class="text-warning" style="text-decoration: line-through"><i class="fa fa-bug text-primary" aria-hidden="true"></i>{{bug.title}}</h2>
-          <h3 class="text-danger">Closed</h3>
+
         </div>
-        <div class="card-body p-0" v-else>
-          <h2 class="text-warning"><i class="fa fa-bug text-primary" aria-hidden="true"></i>{{bug.title}}</h2>
-          <h3 class="text-success">Open</h3>
-        </div>
-        </div>
-        <div class="card-body" style="min-height: 100px; display: flex">
-          <h5 class="text-primary">{{bug.description}}</h5>
+        <div class="card-body" style="min-height: 100px">
+          <h5 class="text-center">{{bug.description}}</h5>
         </div>
         <div v-if="noteToggle && this.bug.closed == false">
           <button class="btn btn-outline-warning mb-2 noteButton" @click="noteToggle = !noteToggle">Hide</button>
@@ -50,10 +51,8 @@
           <button class="btn btn-outline-warning mb-3 noteButton" @click="noteToggle = !noteToggle">Add Note</button>
         </div>
         <div v-if="noteToggle">
-        <form class="card-body flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated && this.bug.closed == false">
-          <div class="form-group">
-            <input type="text" class="form-group m-auto bg-light" v-model="newNote.content" placeholder="Add a note..."/>
-          </div>
+        <form class="card-body d-flex flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated && this.bug.closed == false">
+          <input type="text" class="form-control col-5 mb-2 bg-info" v-model="newNote.content" placeholder="Add a note..."/>
           <button class="btn btn-success postNoteButton" type="submit">Post Note</button>
         </form>
         </div>
@@ -105,8 +104,8 @@ export default {
     editBug(){
       this.bugEdit.id = this.$route.params.bugId;
       this.$store.dispatch("editBug", this.bugEdit);
+      this.bugEdit = {}
       this.editToggle = false;
-      this.bugData = {}
     },
     deleteBug(){
       let c = confirm("Are you sure you'd like to close this bug?")
@@ -126,11 +125,18 @@ export default {
 
 
 <style scoped>
-h2, h5{
+h2{
   text-shadow: 1px 1px black;
+}
+h5{
+  text-shadow: 1px 1px black;
+  color: powderblue;
 }
 button:active{
   transform: translateY(2px);
+}
+.titleBug{
+  color: powderblue;
 }
 .noteButton{
   border-radius: 15px;
