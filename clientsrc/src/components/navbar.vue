@@ -122,7 +122,7 @@ button{
             -1px -1px 4px   #e68484
 }
 .navbar{
-  box-shadow: 4px 4px 10px #343a40
+  box-shadow: 0px 4px 10px #343a40
 }
 
 </style>

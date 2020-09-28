@@ -2,11 +2,11 @@
   <div class="bug-component">
     <router-link class="d-flex justify-content-between bugCard" :to="{name:'bug-details', params:{bugId: bugProp.id}}">
       <div class="displayContents" v-if="bugProp.closed == true">
-          <h5 class="text-danger">CLOSED</h5>-
+          <h5 class="text-danger">CLOSED</h5>
           <h5 class="text-info" style="text-decoration: line-through">{{bugProp.title}}</h5>
       </div>
       <div class="displayContents" v-else>
-          <h5 class="text-success">OPEN</h5>-
+          <h5 class="text-success">OPEN</h5>
           <h5 class="text-info">{{bugProp.title}}</h5>
       </div>
           <p class="text-warning m-0">Author: {{bugProp.creatorEmail}}</p>
