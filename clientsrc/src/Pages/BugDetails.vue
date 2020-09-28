@@ -52,7 +52,7 @@
         </div>
         <div v-if="noteToggle">
         <form class="card-body d-flex flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated">
-          <input type="text" class="form-control col-5 mb-2 bg-info" v-model="newNote.content" placeholder="Add a note..."/>
+          <input type="text" class="form-control col-11 col-md-5 mb-2 bg-info" v-model="newNote.content" placeholder="Add a note..."/>
           <button class="btn btn-success postNoteButton" type="submit">Post Note</button>
         </form>
         </div>
