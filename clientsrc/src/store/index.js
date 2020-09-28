@@ -65,7 +65,6 @@ export default new Vuex.Store({
 
     async getActiveBug({commit}, bugId){
       try {
-        
         let res = await api.get("bugs/" + bugId)
         commit("setActiveBug", res.data)
       } catch (error) {

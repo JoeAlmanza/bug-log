@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import ns from "../store/NotificationService.js"
 import axios from "axios";
 import { getUserData } from "@bcwdev/auth0-vue";
 export default {
@@ -80,12 +81,13 @@ export default {
       }
     },
     async logout() {
-      let c = confirm("Are you sure you'd like to log out?")
-      if(c == true){
-      this.$store.dispatch("resetBearer");
-      await this.$auth.logout({returnTo: window.location.origin});
-      }else{
-        return
+      try {
+        if(await ns.confirmAction()){
+        this.$store.dispatch("resetBearer");
+        await this.$auth.logout({returnTo: window.location.origin})
+        ns.toast("Signed out!", 1500, "success")};
+      } catch (error) {
+        console.error();
       }
     }
   }
