@@ -1,35 +1,23 @@
-# Bug-Report
+
 
 Welcome to the Bug-Report!
 
-## Requirements
 
-### Visualization
-
-- At least 2 supported front end routes
+At least 2 supported front end routes
   - Home shows all bugs
   - BugDetails displays the details of a bug and its Notes
-- Bugs can be filtered by their status
-- Creating a new bug automatically navigates to the BugDetails view
-- Navbar to allow navigating back to Home view
-- Styling Indication on main page that bug is closed (color, strike-through, etc.)
-- Bugs display last modified date
+Bugs can be filtered by their status
+Creating a new bug automatically navigates to the BugDetails view
+Navbar to allow navigating back to Home view
+Styling Indication on main page that bug is closed (color, strike-through, etc.)
+Bugs display last modified date
 
-### Functionality
-
-- Users Can Register, Login, and Logout (this should work out of the box, don't break it)
-- Users can only modify/delete data they created
-- Bugs can be created from the Home view
-- Bugs can be closed from the BugDetails view
-- User is prompted "are you sure?" when closing a Bug
-- Notes can be added and removed from a bug in the BugDetails view
-- User prompt to remove Note from Bug
-- A Bug can be edited
-- Cannot edit a Bug after it is closed
-
-#### Challenges
-
-- Implement user auth
-- Modals for creating Bugs
-- Modals for creating Notes
-- Use sweet alert for prompts
+Users Can Register, Login, and Logout (this should work out of the box, don't break it)
+Users can only modify/delete data they created
+Bugs can be created from the Home view
+Bugs can be closed from the BugDetails view
+User is prompted "are you sure?" when closing a Bug
+Notes can be added and removed from a bug in the BugDetails view
+User prompt to remove Note from Bug
+A Bug can be edited
+Cannot edit a Bug after it is closed
