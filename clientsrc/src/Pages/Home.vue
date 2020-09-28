@@ -35,7 +35,7 @@
       <div class="col-9 my-3">
         <div class="card bg-dark">
           <div class="card-header">
-            <h2 class="text-info">Current Bugs <i class="fa fa-bug text-success" aria-hidden="true"></i></h2>
+            <h1 class="text-info">Current Bugs <i class="fa fa-bug text-success" aria-hidden="true"></i></h1>
             <div class="text-right">
               <button class="m-1 btn btn-outline-info allButton" @click="showAll = true; showOpen = false; showClosed = false">All <i class="fa fa-bug text-info" aria-hidden="true"></i>'s</button>
               <button class="m-1 btn btn-outline-success openButton" @click="showOpen = true; showClosed = false; showAll = false">Open <i class="fa fa-bug text-success" aria-hidden="true"></i>'s</button>

@@ -13,7 +13,7 @@
         />
       </div>
       <div>
-        <h2 class="text-info">ug-Log <i class="fa fa-bug text-success" aria-hidden="true"></i></h2>
+        <h1 class="text-info">ug-Log <i class="fa fa-bug text-success" aria-hidden="true"></i></h1>
       </div>
       </router-link
     >

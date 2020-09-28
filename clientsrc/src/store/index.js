@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import router from "../router";
+import ns from "./NotificationService.js";
 import { api } from "./AxiosService"
 
 Vue.use(Vuex);
@@ -93,12 +94,13 @@ export default new Vuex.Store({
 
     async deleteBug({commit}, bugData){
       try {
-        console.log(bugData);
+        if(await ns.confirmAction()) {
         let res = await api.delete("bugs/" + bugData.id)
         commit("deleteBug", bugData.id)
         commit("setActiveBug", res.data)
+        ns.toast("Deleted!", 1500, "success")}
       } catch (error) {
-        
+        console.error(error);
       }
     },
 
@@ -139,9 +141,10 @@ export default new Vuex.Store({
     },
     async deleteNote({commit, dispatch}, noteData){
       try {
-        await api.delete("notes/" + noteData.id)
+        if(await ns.confirmAction()) await api.delete("notes/" + noteData.id);
         commit("deleteNote", noteData.id)
         dispatch("getNotes", noteData.bug)
+        ns.toast("Deleted!", 1500, "success")
       } catch (error) {
         console.error(error);
       }

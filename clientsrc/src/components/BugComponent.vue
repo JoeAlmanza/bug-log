@@ -1,6 +1,6 @@
 <template>
   <div class="bug-component">
-    <router-link class="d-flex justify-content-around bugCard" :to="{name:'bug-details', params:{bugId: bugProp.id}}">
+    <router-link class="d-flex justify-content-between bugCard" :to="{name:'bug-details', params:{bugId: bugProp.id}}">
       <div class="displayContents" v-if="bugProp.closed == true">
           <h5 class="text-danger">CLOSED</h5>-
           <h5 class="text-info" style="text-decoration: line-through">{{bugProp.title}}</h5>
@@ -10,7 +10,7 @@
           <h5 class="text-info">{{bugProp.title}}</h5>
       </div>
           <p class="text-warning m-0">Author: {{bugProp.creatorEmail}}</p>
-          <p class="text-primary m-0">Updated: {{bugProp.updatedAt | formatDate('timezone', 'America/Denver', 'LLLL ss')}} MST</p>
+          <p class="text-primary m-0">Updated: {{bugProp.updatedAt | formatDate('timezone', 'America/Denver')}} MST</p>
     </router-link>
   </div>
 </template>

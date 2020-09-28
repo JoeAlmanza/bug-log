@@ -108,13 +108,8 @@ export default {
       this.editToggle = false;
     },
     deleteBug(){
-      let c = confirm("Are you sure you'd like to close this bug?")
-      if(c == true){
         this.bugData.id = this.$route.params.bugId;
         this.$store.dispatch("deleteBug", this.bugData)
-      }else{
-        return
-      }
     }
   },
   components:{
