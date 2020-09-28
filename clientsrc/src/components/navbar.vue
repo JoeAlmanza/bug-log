@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img   
@@ -18,7 +18,7 @@
       </router-link
     >
     <button
-      class="navbar-toggler"
+      class="navbar-toggler btn btn-outline-info"
       type="button"
       data-toggle="collapse"
       data-target="#navbarText"

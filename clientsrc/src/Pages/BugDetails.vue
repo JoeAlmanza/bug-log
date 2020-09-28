@@ -1,7 +1,7 @@
 <template>
   <div class="bug-details container-fluid">
     <div class="row justify-content-center flex-column align-items-center mt-5">
-      <div class="col-8 text-center mt-3 p-0">
+      <div class="col-11 col-md-8 text-center mt-3 p-0">
         <div class="card bg-dark">
         <div class="card-header">
           <p class="m-0 d-flex justify-content-between">

@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-9 my-3">
+      <div class="col-12 col-md-9 my-3">
         <div class="card bg-dark">
           <div class="card-header">
             <h1 class="text-info">Current Bugs <i class="fa fa-bug text-success" aria-hidden="true"></i></h1>

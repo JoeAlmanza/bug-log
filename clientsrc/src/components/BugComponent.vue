@@ -33,6 +33,7 @@ export default {
 <style scoped>
 h5{
   text-shadow: 1px 1px black;
+  font-size: 95%
 }
 .bugCard{
   border-bottom-left-radius: 15px;
@@ -43,5 +44,7 @@ h5{
 .displayContents{
   display: contents;
 }
-
+p{
+  font-size: 95%;
+}
 </style>
