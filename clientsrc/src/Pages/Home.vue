@@ -4,7 +4,7 @@
       <div>
       <button class="btn btn-primary mx-3 createButton" v-if="this.$auth.isAuthenticated" @click="createToggle = !createToggle"><i class="fa fa-plus text-success" aria-hidden="true"></i> <i class="fa fa-bug text-success" aria-hidden="true"></i></button>
       </div>
-      <div class="col-8">
+      <div class="col-12 col-md-8">
       <form class="form row addCard m-0 flex-column" @submit.prevent="createBug" v-if="createToggle">
       <div class="col-6 form-group p-0">
         <h5 class="text-primary">Add <i class="fa fa-bug text-primary" aria-hidden="true"></i>:</h5>
