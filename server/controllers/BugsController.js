@@ -10,12 +10,12 @@ export class BugsController extends BaseController {
     super("api/bugs");
     this.router
     .get("", this.getAll)
+    .get("/:id", this.getById)
+    .get("/:id/notes", this.getNotesByBugId)
     .use(auth0provider.getAuthorizedUserInfo)
-      .get("/:id", this.getById)
-      .get("/:id/notes", this.getNotesByBugId)
-      .post("", this.create)
-      .put("/:id", this.edit)
-      .delete("/:id", this.softDelete);
+    .post("", this.create)
+    .put("/:id", this.edit)
+    .delete("/:id", this.softDelete);
   }
 
   async getAll(req, res, next) {
