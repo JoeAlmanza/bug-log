@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import moment from 'moment'
+import moment from 'moment';
 import { Auth0Plugin, onAuth } from "@bcwdev/auth0-vue";
 import { domain, clientId, audience } from "./authConfig";
 
@@ -29,6 +29,6 @@ new Vue({
 
 Vue.filter('formatDate', function (value) {
   if (value) {
-    return moment(String(value)).format('MMMM Do YYYY, h:mm:ss a')
+    return moment(String(value)).format('MMM Do YYYY, h:mm:ss a')
   }
 });

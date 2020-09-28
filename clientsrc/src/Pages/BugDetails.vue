@@ -44,14 +44,14 @@
         <div class="card-body" style="min-height: 100px">
           <h5 class="text-center">{{bug.description}}</h5>
         </div>
-        <div v-if="noteToggle && this.bug.closed == false">
+        <div v-if="noteToggle">
           <button class="btn btn-outline-warning mb-2 noteButton" @click="noteToggle = !noteToggle">Hide</button>
         </div>
-        <div v-else-if="!noteToggle && this.bug.closed == false">
+        <div v-else-if="!noteToggle">
           <button class="btn btn-outline-warning mb-3 noteButton" @click="noteToggle = !noteToggle">Add Note</button>
         </div>
         <div v-if="noteToggle">
-        <form class="card-body d-flex flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated && this.bug.closed == false">
+        <form class="card-body d-flex flex-column align-items-center p-3 mt-3" action="" @submit.prevent="addNote" v-if="this.$auth.isAuthenticated">
           <input type="text" class="form-control col-5 mb-2 bg-info" v-model="newNote.content" placeholder="Add a note..."/>
           <button class="btn btn-success postNoteButton" type="submit">Post Note</button>
         </form>

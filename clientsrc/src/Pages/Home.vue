@@ -42,7 +42,6 @@
               <button class="m-1 btn btn-outline-danger closedButton" @click="showClosed = true; showOpen = false; showAll = false">Closed <i class="fa fa-bug text-danger" aria-hidden="true"></i>'s</button>
             </div>
           </div>
-
           <ul class="list-group list-group-flush" v-if="showAll">
           <bug-component v-for="bug in bugs" :key="bug.id" :bugProp="bug" />
           </ul>
