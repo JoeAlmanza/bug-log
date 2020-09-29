@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style scoped>
-h2, h5{
+h1, h5{
   text-shadow: 1px 1px black;
 }
 button{

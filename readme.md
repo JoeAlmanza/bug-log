@@ -1,5 +1,3 @@
-
-
 Welcome to the Bug-Report!
 
 
